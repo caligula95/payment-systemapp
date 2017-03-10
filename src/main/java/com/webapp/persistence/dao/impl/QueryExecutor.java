@@ -1,9 +1,17 @@
 package com.webapp.persistence.dao.impl;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -12,22 +20,22 @@ import com.mysql.jdbc.Statement;
 import com.webapp.config.ConnectionPool;
 
 public class QueryExecutor {
-	
+
 	private static final Logger LOGGER = LogManager.getLogger(QueryExecutor.class);
-	
+
 	/**
 	 * Connection instance
 	 */
-	private Connection connection;
-	
+	private Connection connection = getConnection();
+
 	/**
 	 * PreparedStatement instance
 	 */
 	private PreparedStatement preparedStatement;
-	
+
 	/**
-     * Singleton instance
-     */
+	 * Singleton instance
+	 */
 	private static QueryExecutor instance = null;
 
 	/**
@@ -36,13 +44,32 @@ public class QueryExecutor {
 	 * @see ConnectionPool
 	 * @throws SQLException
 	 */
-	private QueryExecutor() {
+	private Connection getConnection() {
 		try {
-			connection = ConnectionPool.getInstance().getConnection();
+			try {
+				Class.forName("org.postgresql.Driver").newInstance();
+			} catch (InstantiationException | IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		String username = "lxdnpxlomevtpr";
+		String password = "26edd033ccceb3abeef55448585c04436fa6d8baca11fd49f90288bb23b37684";
+		String dbUrl = "jdbc:postgresql://" + "ec2-54-217-222-254.eu-west-1.compute.amazonaws.com" + ":5432/d3l7p0524to10q";
+		try {
+			return DriverManager.getConnection(dbUrl, username, password);
 		} catch (SQLException e) {
-			LOGGER.error("Error while establish connection");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		return connection;
+	}
+
+	private QueryExecutor() {
 	}
 
 	public static QueryExecutor getInstance() {
