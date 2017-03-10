@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<servlet>
+		<description></description>
+		<display-name>Controller</display-name>
+		<servlet-name>Controller</servlet-name>
+		<servlet-class>com.webapp.controller.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Controller</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>/resources/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<display-name>EncodingFilter</display-name>
+		<filter-name>EncodingFilter</filter-name>
+		<filter-class>com.webapp.filter.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>EncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.webapp.listener.SessionListener</listener-class>
+	</listener>
+
+	<!-- error-page -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/view/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/view/error.jsp</location>
+	</error-page>
+</web-app>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============================================================= Configuration 
+	file for Tomcat 7 Data source and connection pool configuration (The default 
+	Tomcat's DBCP is used) ============================================================= -->
+<Context>
+  <Resource name="jdbc/web" auth="Container" type="javax.sql.DataSource"
+               maxActive="500" maxIdle="10" maxWait="10000"
+               username="lxdnpxlomevtpr"
+                password="26edd033ccceb3abeef55448585c04436fa6d8baca11fd49f90288bb23b37684"
+                 driverClassName="org.postgresql.Driver"
+               url="jdbc:postgres://lxdnpxlomevtpr:26edd033ccceb3abeef55448585c04436fa6d8baca11fd49f90288bb23b37684@ec2-54-217-222-254.eu-west-1.compute.amazonaws.com:5432/d3l7p0524to10q"
+               removeAbandoned="true"
+               removeAbandonedTimeout="60"
+               logAbandoned="true"/>
+</Context>
