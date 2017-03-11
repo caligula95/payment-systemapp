@@ -44,6 +44,9 @@
 				<div class="login-wrapper">
 					<div class="box">
 						<div class="content-wrap">
+						<h6>This is test payment-system application</h6><p>To enter admin page use phone:Admin; password:123</p>
+						<p>If you don't want to register new user feel free to use phone:0000000000; password:12345</p>
+						<p>Code on github: https://github.com/caligula95/payment-systemapp</p>
 							<h6>
 								<fmt:message key="login.signin"></fmt:message>
 							</h6>
