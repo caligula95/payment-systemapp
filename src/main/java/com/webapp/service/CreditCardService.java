@@ -78,7 +78,7 @@ public class CreditCardService {
 				creditCard.setCvv(cvv);
 				creditCard.setIsActive(true);
 				creditCard.setNumber(number);
-				creditCard.setValidity(date);
+				creditCard.setValidity(date.toGMTString());
 				status = creditCardDao.create(creditCard);
 			}
 		}

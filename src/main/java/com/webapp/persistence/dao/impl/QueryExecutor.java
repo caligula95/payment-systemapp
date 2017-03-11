@@ -1,17 +1,10 @@
 package com.webapp.persistence.dao.impl;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -58,7 +51,8 @@ public class QueryExecutor {
 		}
 		String username = "lxdnpxlomevtpr";
 		String password = "26edd033ccceb3abeef55448585c04436fa6d8baca11fd49f90288bb23b37684";
-		String dbUrl = "jdbc:postgresql://" + "ec2-54-217-222-254.eu-west-1.compute.amazonaws.com" + ":5432/d3l7p0524to10q";
+		String dbUrl = "jdbc:postgresql://" + "ec2-54-217-222-254.eu-west-1.compute.amazonaws.com"
+				+ ":5432/d3l7p0524to10q";
 		try {
 			return DriverManager.getConnection(dbUrl, username, password);
 		} catch (SQLException e) {

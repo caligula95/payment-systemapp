@@ -120,7 +120,7 @@ public class PaymentService {
 		payment.setCardNumber(number);
 		payment.setSum(sum);
 		payment.setAppointment(appointment);
-		payment.setDate(new Date());
+		payment.setDate(new Date().toString());
 		Account accountFrom = accountDao.findAccountById(accountId);
 		CreditCard receiverCard = checkAvailableCard(number);
 		BigDecimal suma = checkAvailableSum(sum, accountFrom, percent);

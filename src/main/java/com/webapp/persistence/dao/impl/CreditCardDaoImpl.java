@@ -115,7 +115,7 @@ public class CreditCardDaoImpl implements CreditCardDao {
 			creditCard.setNumber(rs.getString("number"));
 			creditCard.setCvv(rs.getString("cvv"));
 			creditCard.setIsActive(rs.getBoolean("is_active"));
-			creditCard.setValidity(rs.getDate("validity"));
+			creditCard.setValidity(rs.getString("validity"));
 			creditCard.setAccountId(rs.getInt("account_Id"));
 		} catch (SQLException e) {
 			LOGGER.error("SQL exception " + e.getMessage());

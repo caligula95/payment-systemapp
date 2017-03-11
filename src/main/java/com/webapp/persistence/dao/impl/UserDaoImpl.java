@@ -35,15 +35,15 @@ public class UserDaoImpl implements UserDao {
 	 * SQL queries
 	 */
 	private static final String FIND_ALL = "SELECT users.user_Id, users.phone, users.password,"
-			+ "users.email, users.name, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id and users.role_id=1";
+			+ "users.email, users.username, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id and users.role_id=1";
 	private static final String FIND_BY_ID = "SELECT users.user_Id, users.phone, users.password,"
-			+ "users.email, users.name, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.user_id = ?";
+			+ "users.email, users.username, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.user_id = ?";
 	private static final String FIND_BY_LOGIN_PASSWORD = "SELECT users.user_Id, users.phone, users.password,"
-			+ "users.email, users.name, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.phone = ? AND users.password = ?";
-	private static final String CREATE_USER = "INSERT INTO users (phone, password, email, name, surname, role_id) VALUES(?, ?, ?, ?, ?, ?)";
+			+ "users.email, users.username, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.phone = ? AND users.password = ?";
+	private static final String CREATE_USER = "INSERT INTO users (phone, password, email, username, surname, role_id) VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String UPDATE_USER = "UPDATE users SET password = ?, email = ? WHERE user_id = ?";
 	private static final String FIND_BY_PHONE = "SELECT users.user_Id, users.phone, users.password,"
-			+ "users.email, users.name, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.phone = ?";
+			+ "users.email, users.username, users.surname, users.role_Id, role.name FROM users JOIN role ON users.role_id = role.id WHERE users.phone = ?";
 
 	private UserDaoImpl() {
 
@@ -147,14 +147,14 @@ public class UserDaoImpl implements UserDao {
 			user.setPhone(rs.getString("phone"));
 			user.setPassword(rs.getString("password"));
 			user.setEmail(rs.getString("email"));
-			user.setName(rs.getString("name"));
+			user.setName(rs.getString("username"));
 			user.setSurname(rs.getString("surname"));
 			Role role = new Role();
 			role.setId(rs.getInt("role_id"));
-			role.setRolename(rs.getString("role.name"));
+			role.setRolename(rs.getString("name"));
 			user.setRole(role);
 		} catch (SQLException e) {
-			LOGGER.error("SQL exception " + e.getMessage());
+			LOGGER.error("SQL exception1 " + e.getMessage());
 		}
 		return user;
 	}
