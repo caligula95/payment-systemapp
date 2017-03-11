@@ -1,7 +1,6 @@
 package com.webapp.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * CreditCard
@@ -12,7 +11,7 @@ public class CreditCard implements Serializable {
 	private Integer cardId;
 	private String number;
 	private String cvv;
-	private Date validity;
+	private String validity;
 	private Boolean isActive;
 	private Integer accountId;
 
@@ -43,11 +42,11 @@ public class CreditCard implements Serializable {
 		this.cvv = cvv;
 	}
 
-	public Date getValidity() {
+	public String getValidity() {
 		return validity;
 	}
 
-	public void setValidity(Date validity) {
+	public void setValidity(String validity) {
 		this.validity = validity;
 	}
 
