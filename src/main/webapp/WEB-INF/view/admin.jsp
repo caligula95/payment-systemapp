@@ -167,7 +167,6 @@
 					}
 					else {
 						alert("OK");
-						form.submit();
 					}
 				});
 			})();
