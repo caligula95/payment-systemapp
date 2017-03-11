@@ -13,7 +13,7 @@ public class Payment implements Serializable {
 	private Integer paymentId;
 	private BigDecimal sum;
 	private String appointment;
-	private Date date;
+	private String date;
 	private Boolean condition;
 	private Integer accountId;
 	private String cardNumber;
@@ -45,11 +45,11 @@ public class Payment implements Serializable {
 		this.appointment = appointment;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
